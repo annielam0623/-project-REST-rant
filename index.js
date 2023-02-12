@@ -1,19 +1,26 @@
-require('dotenv').config()
-const express = require('express')
-const app = express()
+// Modules and Globals
+const express = require('express');
+const dotenv = require('dotenv').config();
+const app = express();
 
-app.set('view engine', 'jsx')
-app.engine('jsx', require('express-react-views').createEngine())
 
-// Add code import the router created in the places.js
-app.use('/places', require('./controllers/places'))
+// Express Settings
+app.set('views', __dirname + '/views');
+app.set('view engine', 'jsx');
+app.engine('jsx', require('express-react-views').createEngine());
+app.use(express.static('public'));
+
+
+// Controllers & Routes
+app.use('/places', require('./controllers/places'));
 
 app.get('/', (req, res) => {
-    res.render('HOME')
-})
+	res.render('home');
+});
 
-app.get('*', (req,res) => {
-    res.render('error404')
-})
+app.get('*', (req, res) => {
+	res.render('error404');
+});
 
+//LISTEN
 app.listen(process.env.PORT)
