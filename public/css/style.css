@@ -3,6 +3,12 @@ h1 {
     color: cornflowerblue;
   }
   
+
+img {
+   height: 200px;
+   width: 200px;
+}
+
 .btn-primary {
     color: white;
     background-color: rgb(41, 107, 230);
