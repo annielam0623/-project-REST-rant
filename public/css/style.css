@@ -1,0 +1,9 @@
+h1 {
+    text-align: center;
+    color: cornflowerblue;
+  }
+  
+.btn-primary {
+    color: white;
+    background-color: rgb(41, 107, 230);
+}
