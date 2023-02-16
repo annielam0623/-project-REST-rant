@@ -1,3 +1,14 @@
+body {
+  background-color: lightblue;
+  text-align: center;
+}
+
+main {
+  margin-right: 20px;
+  margin-left: 20px;
+  background-color: white;
+}
+
 
 h1 {
     text-align: center;
@@ -7,8 +18,8 @@ h1 {
   
 
 img {
-   height: 200px;
-   width: 200px;
+   height: 400px;
+   width: 600px;
 }
 
 .btn-primary {
@@ -19,6 +30,7 @@ img {
 nav {
   background-color: cornflowerblue;
   padding: 10px;
+  text-align: center;
 }
 
 nav ul {
