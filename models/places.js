@@ -6,11 +6,11 @@ const {Schema} = mongoose
 
 const placeSchema = new mongoose.Schema({
   name: {type: String, required: true},
-  pic: String,
+  pic: {type: String, default:'http://placehold.it/500x500.png'},
   cuisines: {type: String, required: true},
   city: {type:String, default: 'Anytown'},
   state: {type: String, default: 'USA'},
-  founded: Number
+  founded: {type: Number}
 })
 
 

@@ -17,13 +17,14 @@ app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 mongoose.set({strictQuery: true})
 
+//connect to mongo
 mongoose.connect(process.env.MONGO_URI, {
-	useNewUrlParser: true,
-	useUnifiedTopology: true},
-	() => {
-		console.log('connected to:', MONGO_URI);
-	}
-)
+	useNewUrlParser: true, 
+	useUnifiedTopology: true
+    }, 
+	() => { console.log('connected to mongo: ', process.env.MONGO_URI) }
+  )
+  
 
 // Controllers & Routes
 app.use('/places', require('./controllers/places'));

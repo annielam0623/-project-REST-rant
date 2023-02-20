@@ -4,3 +4,5 @@ const mongoose = require('mongoose')
         useNewUrlParser: true,
         useUnifiedTopology: true
        })
+
+module.exports.Place = require('./places')
