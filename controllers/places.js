@@ -21,6 +21,7 @@ router.get('/:id/edit', (req, res) => {
     })
 })
 
+//POST
 router.post('/', (req, res) => {
   db.Place.create(req.body)
     .then(() => {
@@ -30,14 +31,14 @@ router.post('/', (req, res) => {
       if (err && err.name == 'ValidationError') {
         let message = 'Validation Error: '
         for (var field in err.errors) {
-          message += `${field}  was ${err.errors[field].value}. `
+          message += `${field} was ${err.errors[field].value}. `
           message += `${err.errors[field].message}`
         }
         console.log('Validation error message', message)
         res.render('places/new', { message })
       }
       else {
-        res.render("Error")
+        res.render('error')
       }
     })
 })
@@ -66,9 +67,10 @@ router.get('/:id', (req, res) => {
     })
 })
 
+//PUT
 router.put('/:id', (req, res) => {
   db.Place.findByIdAndUpdate(req.params.id, req.body)
-    .then((updatePlace) => {
+    .then(() => {
       console.log(updatePlace);
       res.redirect(`/places/${req.params.id}`)
     })
@@ -78,6 +80,7 @@ router.put('/:id', (req, res) => {
     })
 })
 
+//DELETE
 router.delete('/:id', (req, res) => {
   db.Place.findByIdAndDelete(req.params.id)
     .then(place => {

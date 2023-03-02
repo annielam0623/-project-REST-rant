@@ -3,13 +3,13 @@ const Default = require('../default')
 
 
 
-function show({ place}) {
+function show({ place }) {
     return (
         <Default>
             <main>
                 <div className="row">
                     <div className="col-sm-6">
-                        <img src={place.pic} alt={place.name}></img>
+                        <img src={place.pic} alt={place.name} />
                         <h3>
                             Located in {place.city}, {place.state}
                         </h3>
@@ -29,7 +29,6 @@ function show({ place}) {
                                 Serving {place.cuisines}
                             </h4>
                         </div>
-
                         <a href={`/places/${place._id}/edit`} className="btn btn-warning">
                             Edit
                         </a>
