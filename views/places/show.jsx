@@ -1,8 +1,6 @@
 const React = require('react')
 const Default = require('../default')
 
-
-
 function show({ place }) {
     return (
         <Default>
@@ -18,7 +16,7 @@ function show({ place }) {
                         <h1>{place.name}</h1>
                         <br></br>
                         <h2>rating</h2>
-                        currently unrated...
+                           currently unrated...
                         <br></br>
                         <div className="description">
                             <h3>Description</h3>
