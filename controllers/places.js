@@ -14,7 +14,7 @@ router.get('/:id/edit', (req, res) => {
     .then(place => {
       res.render('places/edit', { place })
     })
-    .catch((err) => {
+    .catch((err )=> {
       res.render("Error")
     })
 })
@@ -25,7 +25,7 @@ router.post('/', (req, res) => {
     .then(() => {
       res.redirect('/places')
     })
-    .catch((err) => {
+    .catch(err => {
       if (err && err.name == 'ValidationError') {
         let message = 'Validation Error: '
         for (var field in err.errors) {
@@ -41,24 +41,27 @@ router.post('/', (req, res) => {
 })
 
 //POST - Comment
-router.post('/:id/comment', (req, res) => {
-  console.log(req.body)
+router.post('/:id/comment', async (req, res) => {
+  let body = req.body
+  if (body.auther === "") {
+    body.auther = undefined;
+  }
   req.body.rant = req.body.rant ? true : false
-  db.Place.findById(req.params.id)
-    .then((place) => {
-      db.Comment.create(req.body)
-        .then((comment) => {
-          place.comments.push(comment.id)
-          place.save()
-            res.redirect(`/places/${req.params.id}`)
-        })
-        .catch((err) => {
-          res.render("error404")
-        })
-    })
-    .catch((err) => {
-      res.render("error404")
-    })
+  try{ 
+    let place = await db.Place.findById(req.params.id)
+      try { 
+        let comment = await db.Comment.create(body)
+        place.Comments.push(comment.id)
+        await place.save()
+        res.status(302).redirect(`/places/${req.params.id}`)
+        }
+        catch(err) {
+          res.status(404).render("error404")
+        }
+    
+  } catch(err) {
+      res.status(404).render("error404")
+    }
   })
 
 
@@ -112,11 +115,6 @@ router.post('/:id/comment', (req, res) => {
       })
   })
 
-  //DELETE COMMENT
-
-  router.delete('/:id/comment/:rantId', (req, res) =>{
-    db.Pla
-  })
 
   module.exports = router
 

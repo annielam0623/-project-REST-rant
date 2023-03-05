@@ -1,12 +1,11 @@
 const React = require('react')
 const Def = require('../default')
 
-function new_form({ message }) {
+function new_form( data ) {
     return (
         <Def>
             <mian>
                 <h1>Add a New Place</h1>
-                {message}
                 <form method="POST" action="/places">
                     <div className="form-group col-sm-6 text-center">
                         <label htmlFor="name">Place Name</label>
@@ -37,9 +36,8 @@ function new_form({ message }) {
                         <label htmlFor="cuisines">Cuisines</label>
                         <input className="form-control" id="cuisines" name="cuisines" required />
                     </div>
+                     <input className="btn btn-primary" type="submit" defaultValue="Add Place" />
                 </form>
-                <input className="btn btn-primary" type="submit" value="Add Place" />
-
             </mian>
         </Def>
     )

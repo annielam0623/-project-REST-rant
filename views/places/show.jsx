@@ -92,12 +92,13 @@ function show({ place }) {
                                 <input className="form-control" type="range" step="0.5" min="1" max="5" id="stars" name="stars" required />
                             </div>
                             <div className="form-group col-md-4  mt-2r">
-                                <label htmlFor="content">Is this a rant?</label>
+                                <label htmlFor="rant">Is this a rant?</label>
                                 <br />
                                 <input
+                                    className="form-check-input"
                                     type="checkbox"
-                                    name="content"
-                                    id="content"
+                                    name="rant"
+                                    id="rant"
                                 />
                             </div>
                             <div className="form-group col-md-12">
