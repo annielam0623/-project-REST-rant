@@ -12,11 +12,9 @@ router.get('/new', (req, res) => {
 router.get('/:id/edit', (req, res) => {
   db.Place.findById(req.params.id)
     .then(place => {
-      console.log(req.params.id)
       res.render('places/edit', { place })
     })
     .catch((err) => {
-      console.log('err', err)
       res.render("Error")
     })
 })
