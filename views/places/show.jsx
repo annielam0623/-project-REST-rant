@@ -14,6 +14,15 @@ function show ({ place }) {
         </h3>
     )
     if (place.comments.length) {
+        let sumRatings = place.comments.reduce((tot, c) => {
+            return tot + c.stars
+        }, 0)
+        let averageRating = sumRatings / place.comments.length
+        rating = (
+            <h3>
+                {Math.round(averageRating)} stars
+            </h3>
+        )
         comments = place.comments.map(c => {
             return (
                 <div className="border">
@@ -41,7 +50,7 @@ function show ({ place }) {
                         <h1>{place.name}</h1>
                         <br></br>
                         <h2>rating</h2>
-                        currently unrated...
+                          {rating}
                         <br></br>
                         <div className="description">
                             <h3>Description</h3>
